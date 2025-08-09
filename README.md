@@ -47,3 +47,29 @@ make
 ./build/voice_chat 192.168.1.10 8888
 ```
 Приложение использует порт `8888` для прослушивания. Нажмите `Enter` в консоли, чтобы завершить сеанс.
+
+---
+
+## Сборка под Windows (с использованием vcpkg)
+
+### 1. Установка зависимостей
+
+1.  **Visual Studio:** Установите [Visual Studio](https://visualstudio.microsoft.com/) с компонентом "Разработка классических приложений на C++".
+2.  **vcpkg:** Установите менеджер пакетов [vcpkg](https://vcpkg.io/en/getting-started.html), следуя официальной инструкции.
+3.  **Установка библиотек:** С помощью vcpkg установите `PortAudio` и `Opus`.
+    ```bash
+    vcpkg install portaudio:x64-windows libopus:x64-windows
+    ```
+
+### 2. Сборка проекта
+
+Для компиляции проекта необходимо указать CMake, где находится `vcpkg`.
+
+```bash
+# Замените [path-to-vcpkg] на ваш путь к vcpkg
+cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=[path-to-vcpkg]/scripts/buildsystems/vcpkg.cmake
+
+# Сборка
+cmake --build build
+```
+Исполняемый файл `voice_chat.exe` появится в директории `build/Debug` или `build/Release`.
