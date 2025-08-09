@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/voice_chat.dir/src/main.cpp.o CMakeFiles/voice_chat.dir/src/network.cpp.o -o voice_chat  -lportaudio -lasound -lm -lpthread -lopus
